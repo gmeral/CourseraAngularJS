@@ -106,6 +106,11 @@ module.exports = function(grunt) {
                 dest: 'dist'
             }
         },
+        ngAnnotate: {
+            options: {
+                singleQuotes: true
+            }
+        },
         // Concat
         concat: {
             options: {
@@ -159,6 +164,7 @@ module.exports = function(grunt) {
         'jshint',
         'useminPrepare',
         'concat',
+        'ngAnnotate',
         'cssmin',
         'uglify',
         'copy',

@@ -2,7 +2,7 @@
 
 angular.module('confusionApp', ['ngRoute'])
 
-.config(function($routeProvider) {
+.config(['$routeProvider', function($routeProvider) {
     $routeProvider
     // route for the contactus page
         .when('/contactus', {
@@ -20,4 +20,4 @@ angular.module('confusionApp', ['ngRoute'])
             controller: 'DishDetailController'
         })
         .otherwise('/contactus');
-});
+}]);
