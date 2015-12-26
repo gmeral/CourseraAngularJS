@@ -70,7 +70,7 @@ angular.module('confusionApp')
         };
     }])
 
-.controller('DishDetailController', ['$scope', '$routeParams', 'menuFactory', function($scope, $routeParams, menuFactory) {
+.controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', function($scope, $stateParams, menuFactory) {
     $scope.commentCategories = [
         "rating",
         "comment",
@@ -86,7 +86,7 @@ angular.module('confusionApp')
         this.value = "";
     };
 
-    var dish = menuFactory.getDish(parseInt($routeParams.id, 10));
+    var dish = menuFactory.getDish(parseInt($stateParams.id, 10));
     $scope.dish = dish;
 }])
 
