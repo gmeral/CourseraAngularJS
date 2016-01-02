@@ -6,8 +6,14 @@ angular.module('confusionApp')
     $scope.tab = 1;
     $scope.filtText = '';
     $scope.showDetails = false;
-    $scope.dishes = menuFactory.getDishes();
+    $scope.dishes = [];
 
+    menuFactory.getDishes()
+        .then(
+            function(response) {
+                $scope.dishes = response.data;
+            }
+        );
     $scope.select = function(setTab) {
         $scope.tab = setTab;
         if (setTab === 2) {
@@ -86,8 +92,14 @@ angular.module('confusionApp')
         this.value = "";
     };
 
-    var dish = menuFactory.getDish(parseInt($stateParams.id, 10));
-    $scope.dish = dish;
+    $scope.dish = {};
+    menuFactory.getDish(parseInt($stateParams.id, 10))
+        .then(
+            function(response) {
+                $scope.dish = response.data;
+                $scope.showDish = true;
+            }
+        );
 }])
 
 .controller('DishCommentController', ['$scope', function($scope) {
@@ -126,12 +138,18 @@ angular.module('confusionApp')
 }])
 
 .controller('IndexController', ['$scope', 'menuFactory', 'corporateFactory', function($scope, menuFactory, corporateFactory) {
-    $scope.featuredDish = menuFactory.getDish(0);
+        $scope.dish = {};
+    menuFactory.getDish(0)
+        .then(
+            function(response) {
+                $scope.dish = response.data;
+                $scope.showDish = true;
+            }
+        );
     $scope.promotion = menuFactory.getPromotion(0);
     $scope.chef = corporateFactory.getLeader(0);
 }])
 
 .controller('AboutController', ['$scope', 'corporateFactory', function($scope, corporateFactory) {
     $scope.leaders = corporateFactory.getLeaders();
-}])
-;
+}]);
