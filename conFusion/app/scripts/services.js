@@ -2,16 +2,20 @@
 
 angular.module('confusionApp')
     .constant("baseURL", "http://localhost:3000/")
-    .service('menuFactory', ['$http', 'baseURL', function($http, baseURL) {
+    .service('menuFactory', ['$resource', 'baseURL', function($resource, baseURL) {
 
         this.getDishes = function() {
-            return $http.get(baseURL + "dishes");
+            return $resource(baseURL + "dishes/:id", null, {
+                'update': {
+                    method: 'PUT'
+                }
+            });
         };
 
-        this.getDish = function(index) {
-            return $http.get(baseURL + "dishes/" + index);
-
-        };
+        // deprecated : this is done with the getDishes().get({id:index}) call    
+        // this.getDish = function(index) {
+        //     return $http.get(baseURL + "dishes/" + index);
+        // };
 
         var promotions = [{
                 _id: 0,

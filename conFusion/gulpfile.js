@@ -77,6 +77,7 @@ gulp.task('browser-sync', ['default'], function() {
     ];
 
     browserSync.init(files, {
+        port: 8000,
         server: {
             baseDir: "dist",
             index: "index.html"
