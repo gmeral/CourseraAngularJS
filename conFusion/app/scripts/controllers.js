@@ -95,7 +95,6 @@ angular.module('confusionApp')
         var el = document.getElementById("catInput");
         el.value = "";
     };
-    //TODO Fix comment filtering
     $scope.showDish = false;
     $scope.message = "Loading ...";
     $scope.dish = menuFactory.getDishes().get({
@@ -120,7 +119,6 @@ angular.module('confusionApp')
         comment: ""
     };
     $scope.commentSub = commentSub;
-
 
     $scope.submitComment = function() {
         $scope.commentSub.date = new Date().toISOString();

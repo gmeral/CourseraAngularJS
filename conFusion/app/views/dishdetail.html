@@ -20,7 +20,7 @@
                     </h2>
                     <p>{{dish.description}}</p>
                     Filter comments by :
-                    <input id="catInput" type="text" ng-model='catFilter' list="categories"></input>
+                    <input id="catInput" type="text" ng-model='$parent.catFilter' list="categories" ng-click="clearValue()"></input>
                     <datalist id="categories">
                         <option ng-repeat="category in commentCategories" value="{{category}}">
                     </datalist>
