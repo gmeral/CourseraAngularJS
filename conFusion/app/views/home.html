@@ -33,7 +33,10 @@
             <p style="padding:20px;"></p>
             <h3 align=center>This Month's Promotions</h3>
         </div>
-        <div class="col-xs-12 col-sm-9">
+        <div class="col-xs-12 col-sm-9" ng-if="!showDish">
+            <h3>{{messagePromo}}</h3>
+        </div>
+        <div class="col-xs-12 col-sm-9" ng-if="showDish">
             <div class="media">
                 <div class="media-left media-middle">
                     <img class="media-object img-thumbnail" ng-src={{promotion.image}} alt="Uthappizza">
@@ -54,7 +57,10 @@
             <p style="padding:20px;"></p>
             <h3 align=center>Meet our Culinary Specialists</h3>
         </div>
-        <div class="col-xs-12 col-sm-9 col-sm-pull-3">
+        <div class="col-xs-12 col-sm-9 col-sm-pull-3" ng-if="!showLeader">
+            <h3>{{messageLeader}}</h3>
+        </div>
+        <div class="col-xs-12 col-sm-9 col-sm-pull-3" ng-if="showLeader">
             <div class="media">
                 <div class="media-left media-middle">
                     <img class="media-object img-thumbnail" ng-src={{chef.image}} alt="Uthappizza">
